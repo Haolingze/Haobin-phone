@@ -17,7 +17,8 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background
 #status.dark{color:var(--ink)}
 #wall{background:var(--wall);background-size:cover;background-position:center}
 /* lock */
-#lock{z-index:15;align-items:center;color:#fff;padding-top:90px;transition:transform .45s ease;background:#14201f url(e44a3f446e582651a73d043250cf87e7.jpg) center/cover no-repeat}#lock.gone{transform:translateY(-100%)}
+#lock{z-index:15;align-items:center;color:#fff;padding-top:90px;transition:transform .45s ease;background:#14201f url(e44a3f446e582651a73d043250cf87e7.jpg) center/cover no-repeat}
+#lock.gone{transform:translateY(-100%)}
 #lock .time{font-size:76px;font-weight:300;letter-spacing:-2px}
 #lock .date{font-size:16px;opacity:.85;margin-bottom:auto}
 #lock .hint{margin-bottom:34px;font-size:14px;opacity:.8}
@@ -47,6 +48,7 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background
 .m{max-width:78%;padding:9px 13px;border-radius:18px;line-height:1.35;font-size:15px}
 .m.me{align-self:flex-end;background:var(--mine);color:#fff;border-bottom-right-radius:5px}
 .m.them{align-self:flex-start;background:var(--theirs);border-bottom-left-radius:5px}
+.m.pic{padding:4px}.m.pic img{width:100%;max-width:220px;border-radius:14px;display:block}.m.pic div{padding:6px 9px 4px}
 .stamp{align-self:center;font-size:11px;opacity:.55;margin:6px 0}
 .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .ph{aspect-ratio:1;border:0;display:grid;place-items:center;font-size:34px;background-size:cover;background-position:center;cursor:pointer}
@@ -62,7 +64,7 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background
 #bar.dk{background:var(--ink)}
 #note{position:absolute;top:50px;left:12px;right:12px;background:#fffffff2;color:#111;padding:12px 14px;border-radius:16px;z-index:40;font-size:14px;transform:translateY(-140px);transition:transform .4s;cursor:pointer}
 #note.show{transform:none}
-  .app .ic img{width:60px !important;height:60px !important;max-width:60px;max-height:60px;border-radius:15px;object-fit:cover;display:block}
+.app .ic img{width:60px !important;height:60px !important;max-width:60px;max-height:60px;border-radius:15px;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -84,19 +86,20 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background
 <script>
 /* =====================================================================
    EDIT THIS SECTION ONLY - this is your story.
-   Images: put files in an "images" folder next to index.html and write
-   src:"images/clue1.jpg". If src is left out, the emoji is shown.
+   Pictures: upload them next to index.html and write the file name,
+   for example src:"clue1.jpg". If src is empty, the emoji is shown.
+   Every line ends with a comma EXCEPT the last one in each list.
    ===================================================================== */
 const STORY = {
   owner: "Hanbin",
-  time: "21:46",                       // clock shown on the phone
+  time: "21:46",
   date: "Wednesday 23 December",
-wallpaper: "url(67612439585ff09a6c3c21e3210c981a.jpg)",
+  wallpaper: "url(67612439585ff09a6c3c21e3210c981a.jpg)",
   passcode: "0725",                    // set to "" for no passcode
   passHint: "Hint: the most important day",
-  banner: "1 new message from Hao",// pop-up notification after unlock ("" for none)
+  banner: "1 new message from Hao",    // set to "" for no pop-up
 
-  apps: ["messages","photos","notes","contacts","voicemail"], // order on home screen
+  apps: ["messages","photos","notes","contacts","voicemail"],
 
   contacts: [
     {name:"Hao", color:"#c2573b", phone:"Withheld", about:"❤️"},
@@ -105,7 +108,7 @@ wallpaper: "url(67612439585ff09a6c3c21e3210c981a.jpg)",
   ],
 
   messages: [
-       {with:"Hao", unread:1, msgs:[
+    {with:"Hao", unread:1, msgs:[
       {t:"Sun 09:12"},
       {from:"them", text:"Are you awake yet?"},
       {from:"me", text:"Barely. I was up late packing."},
@@ -135,8 +138,8 @@ wallpaper: "url(67612439585ff09a6c3c21e3210c981a.jpg)",
     {with:"Manager", unread:4, msgs:[
       {t:"Today 21:13"},
       {from:"them", text:"Matthew says you aren't at home?"},
-      {from:"them", text:"Hanbin, please remember you have an early shoot tomorrow."}
-      {from:"them", text:"Are you with Hao again?"}
+      {from:"them", text:"Hanbin, please remember you have an early shoot tomorrow."},
+      {from:"them", text:"Are you with Hao again?"},
       {from:"them", text:"Fine, be careful you two. I can't cover for you again!"}
     ]}
   ],
@@ -168,7 +171,7 @@ document.documentElement.style.setProperty("--wall", STORY.wallpaper);
 
 const APPS = {
   messages:{label:"Messages",icon:"a588f3ea99008fa3b3623914ffdd0d8d.jpg",bg:"#38b26b",badge:()=>STORY.messages.reduce((a,t)=>a+(t.unread||0),0)},
- photos:{label:"Photos",icon:"9ca86fa9d1d47db3bd64e6d531b77f9a.jpg",bg:"#e0a43a"},
+  photos:{label:"Photos",icon:"9ca86fa9d1d47db3bd64e6d531b77f9a.jpg",bg:"#e0a43a"},
   notes:{label:"Notes",icon:"9fbbddf362b3e7de3beafafcc390cc55.jpg",bg:"#d9c24a"},
   contacts:{label:"Contacts",icon:"1c1283c73d36bd99f04562c9178a589e.jpg",bg:"#6c7a89"},
   voicemail:{label:"Voicemail",icon:"81e352f83a1e8684c226a23569b25885.jpg",bg:"#4a7fd0"}
@@ -182,7 +185,8 @@ function drawHome(){
   $("grid").innerHTML = STORY.apps.map(k=>{
     const a=APPS[k], b=a.badge?a.badge():0;
     const pic=/\.(png|jpe?g|webp|svg)$/i.test(a.icon);
-    return `<button class="app" data-k="${k}"><span class="ic" style="${pic?"background:none;box-shadow:none":"background:"+a.bg}">${pic?`<img src="${a.icon}" alt="">`:a.icon}</span>${a.label}${b?`<span class="badge">${b}</span>`:""}</button>`;  }).join("");
+    return `<button class="app" data-k="${k}"><span class="ic" style="${pic?"background:none;box-shadow:none":"background:"+a.bg}">${pic?`<img src="${a.icon}" alt="">`:a.icon}</span>${a.label}${b?`<span class="badge">${b}</span>`:""}</button>`;
+  }).join("");
   document.querySelectorAll(".app").forEach(b=>b.onclick=()=>openApp(b.dataset.k));
 }
 
@@ -207,14 +211,15 @@ function goHome(){
 /* Messages */
 function msgList(){
   show("Messages", STORY.messages.map((t,i)=>{
-    const last=[...t.msgs].reverse().find(m=>m.text)||{text:""};
+    const lm=[...t.msgs].reverse().find(m=>m.text||m.img)||{};
+    const last={text:lm.text||(lm.img?"📷 Photo":"")};
     return `<button class="row ${t.unread?"unread":""}" data-i="${i}"><span class="av" style="background:${colorOf(t.with)}">${esc(ini(t.with))}</span><span class="t"><b>${esc(t.with)}</b><small>${esc(last.text)}</small></span></button>`;
   }).join(""));
   document.querySelectorAll(".row").forEach(r=>r.onclick=()=>msgThread(+r.dataset.i));
 }
 function msgThread(i){
   const t=STORY.messages[i]; t.unread=0;
-  show(t.with, `<div class="msgs">${t.msgs.map(m=>m.t?`<div class="stamp">${esc(m.t)}</div>`:`<div class="m ${m.from==="me"?"me":"them"}">${esc(m.text)}</div>`).join("")}</div>`, msgList);
+  show(t.with, `<div class="msgs">${t.msgs.map(m=>m.t?`<div class="stamp">${esc(m.t)}</div>`:m.img?`<div class="m ${m.from==="me"?"me":"them"} pic"><img src="${esc(m.img)}" alt="">${m.text?`<div>${esc(m.text)}</div>`:""}</div>`:`<div class="m ${m.from==="me"?"me":"them"}">${esc(m.text)}</div>`).join("")}</div>`, msgList);
 }
 
 /* Photos */
