@@ -157,8 +157,8 @@ $("clock").textContent = STORY.time; $("lt").textContent = STORY.time; $("ld").t
 function drawHome(){
   $("grid").innerHTML = STORY.apps.map(k=>{
     const a=APPS[k], b=a.badge?a.badge():0;
-    return `<button class="app" data-k="${k}"><span class="ic" style="background:${a.bg}">${a.icon}</span>${a.label}${b?`<span class="badge">${b}</span>`:""}</button>`;
-  }).join("");
+    const pic=/\.(png|jpe?g|webp|svg)$/i.test(a.icon);
+    return `<button class="app" data-k="${k}"><span class="ic" style="${pic?"background:none;box-shadow:none":"background:"+a.bg}">${pic?`<img src="${a.icon}" alt="">`:a.icon}</span>${a.label}${b?`<span class="badge">${b}</span>`:""}</button>`;  }).join("");
   document.querySelectorAll(".app").forEach(b=>b.onclick=()=>openApp(b.dataset.k));
 }
 
