@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mara's Phone</title>
+<style>
+:root{--ink:#14201f;--paper:#f3f6f4;--accent:#2f8f83;--mine:#2f8f83;--theirs:#e3e9e6;--line:#d5dcd9}
+@media (prefers-color-scheme:dark){:root{--ink:#e9f0ee;--paper:#18211f;--theirs:#2a3532;--line:#33403c}}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#0d1211;display:grid;place-items:center;color:var(--ink)}
+#phone{position:relative;width:min(380px,100vw);height:min(780px,100dvh);background:#000;border-radius:44px;overflow:hidden;box-shadow:0 0 0 10px #1b2523,0 30px 80px #000a}
+@media (max-width:480px){#phone{border-radius:0;box-shadow:none;width:100vw;height:100dvh}}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column}
+#status{position:absolute;top:0;left:0;right:0;height:38px;padding:12px 26px 0;display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#fff;z-index:20;pointer-events:none;mix-blend-mode:normal}
+#status.dark{color:var(--ink)}
+#wall{background:var(--wall);background-size:cover;background-position:center}
+/* lock */
+#lock{z-index:15;align-items:center;color:#fff;padding-top:90px;transition:transform .45s ease}
+#lock.gone{transform:translateY(-100%)}
+#lock .time{font-size:76px;font-weight:300;letter-spacing:-2px}
+#lock .date{font-size:16px;opacity:.85;margin-bottom:auto}
+#lock .hint{margin-bottom:34px;font-size:14px;opacity:.8}
+#pin{display:none;flex-direction:column;align-items:center;margin-bottom:30px;gap:14px}
+#dots{display:flex;gap:12px}#dots i{width:12px;height:12px;border-radius:50%;border:2px solid #fff}#dots i.on{background:#fff}
+#pad{display:grid;grid-template-columns:repeat(3,64px);gap:12px}
+#pad button{height:64px;border-radius:50%;border:0;background:#ffffff30;color:#fff;font-size:24px}
+#pin.shake{animation:sh .3s}@keyframes sh{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+/* home */
+#home{padding:70px 22px 0;color:#fff}
+#grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 8px}
+.app{background:none;border:0;color:#fff;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;position:relative}
+.app .ic{width:60px;height:60px;border-radius:15px;display:grid;place-items:center;font-size:30px;box-shadow:0 3px 10px #0004}
+.badge{position:absolute;top:-4px;right:2px;background:#d93c3c;color:#fff;border-radius:10px;min-width:20px;padding:1px 6px;font-size:12px;font-weight:600}
+/* app window */
+#appwin{z-index:10;background:var(--paper);transform:scale(.6);opacity:0;pointer-events:none;border-radius:40px;transition:transform .28s ease,opacity .2s}
+#appwin.open{transform:none;opacity:1;pointer-events:auto;border-radius:0}
+.bar{padding:48px 16px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);min-height:92px}
+.bar h1{font-size:19px;flex:1}
+.bar button{background:none;border:0;color:var(--accent);font-size:16px;cursor:pointer;padding:4px}
+.body{flex:1;overflow-y:auto;padding-bottom:70px}
+.row{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;width:100%;background:none;border-left:0;border-right:0;border-top:0;color:inherit;text-align:left;font:inherit}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;flex:none}
+.row .t{flex:1;min-width:0}.row b{display:block}.row small{display:block;opacity:.65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.unread b::after{content:" ●";color:var(--accent);font-size:11px}
+.msgs{padding:14px;display:flex;flex-direction:column;gap:6px}
+.m{max-width:78%;padding:9px 13px;border-radius:18px;line-height:1.35;font-size:15px}
+.m.me{align-self:flex-end;background:var(--mine);color:#fff;border-bottom-right-radius:5px}
+.m.them{align-self:flex-start;background:var(--theirs);border-bottom-left-radius:5px}
+.stamp{align-self:center;font-size:11px;opacity:.55;margin:6px 0}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ph{aspect-ratio:1;border:0;display:grid;place-items:center;font-size:34px;background-size:cover;background-position:center;cursor:pointer}
+#light{position:absolute;inset:0;z-index:30;background:#000e;display:none;flex-direction:column;justify-content:center;align-items:center;padding:20px;color:#fff;text-align:center;gap:14px}
+#light.show{display:flex}
+#light .big{width:100%;aspect-ratio:1;display:grid;place-items:center;font-size:90px;background-size:contain;background-repeat:no-repeat;background-position:center;border-radius:12px}
+#light button{background:#fff2;border:0;color:#fff;padding:9px 22px;border-radius:20px;font-size:15px}
+.note{padding:18px 20px;line-height:1.55;white-space:pre-wrap;font-size:16px}
+.card{padding:26px 20px;text-align:center}.card .av{width:84px;height:84px;font-size:34px;margin:0 auto 12px}
+.card dl{text-align:left;margin-top:18px}.card dt{font-size:12px;opacity:.6;margin-top:12px}.card dd{font-size:16px}
+.vm{padding:14px 16px;border-bottom:1px solid var(--line)}.vm p{margin-top:6px;line-height:1.45;font-size:15px;font-style:italic;opacity:.85}
+#bar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:130px;height:6px;border-radius:3px;background:#fff;opacity:.85;z-index:25;border:0;cursor:pointer}
+#bar.dk{background:var(--ink)}
+#note{position:absolute;top:50px;left:12px;right:12px;background:#fffffff2;color:#111;padding:12px 14px;border-radius:16px;z-index:40;font-size:14px;transform:translateY(-140px);transition:transform .4s;cursor:pointer}
+#note.show{transform:none}
+</style>
+</head>
+<body>
+<div id="phone">
+  <div id="status"><span id="clock"></span><span>5G ▂▄▆ 🔋</span></div>
+  <div class="screen" id="wall"></div>
+  <div class="screen" id="home"><div id="grid"></div></div>
+  <div class="screen" id="appwin"></div>
+  <div class="screen" id="lock">
+    <div class="time" id="lt"></div><div class="date" id="ld"></div>
+    <div id="pin"><div id="dots"></div><div id="pad"></div></div>
+    <div class="hint" id="hint">Tap to unlock</div>
+  </div>
+  <div id="light"><div class="big" id="lbig"></div><div id="lcap"></div><button id="lclose">Close</button></div>
+  <div id="note"></div>
+  <button id="bar" aria-label="Home"></button>
+</div>
+
+<script>
+/* =====================================================================
+   EDIT THIS SECTION ONLY - this is your story.
+   Images: put files in an "images" folder next to index.html and write
+   src:"images/clue1.jpg". If src is left out, the emoji is shown.
+   ===================================================================== */
+const STORY = {
+  owner: "Mara Quinn",
+  time: "23:47",                       // clock shown on the phone
+  date: "Friday 13 March",
+  wallpaper: "linear-gradient(160deg,#14363a,#2f6f6a 55%,#c98a52)",
+  passcode: "1313",                    // set to "" for no passcode
+  passHint: "Hint: the night the lights went out",
+  banner: "1 new message from Unknown",// pop-up notification after unlock ("" for none)
+
+  apps: ["messages","photos","notes","contacts","voicemail"], // order on home screen
+
+  contacts: [
+    {name:"Jonah Reyes", color:"#c2573b", phone:"07700 900111", about:"Brother. Works nights at the docks."},
+    {name:"Dr. Elise Park", color:"#4a6fa5", phone:"07700 900222", about:"Family GP."},
+    {name:"Unknown", color:"#555", phone:"Withheld", about:"No contact saved."}
+  ],
+
+  messages: [
+    {with:"Jonah Reyes", unread:0, msgs:[
+      {t:"Thu 20:15"},
+      {from:"them", text:"Did you get the key from Dad?"},
+      {from:"me", text:"Not yet. He said he'd leave it under the blue pot."},
+      {from:"them", text:"Don't go in without me. Promise."}
+    ]},
+    {with:"Unknown", unread:1, msgs:[
+      {t:"Today 23:31"},
+      {from:"them", text:"I know what you found in the boathouse."},
+      {from:"them", text:"Delete the photos. Come alone."}
+    ]}
+  ],
+
+  photos: [
+    {emoji:"🚪", caption:"Boathouse door, left ajar. 21:02", src:""},
+    {emoji:"🗝️", caption:"The key under the blue pot.", src:""},
+    {emoji:"📓", caption:"Page torn from a ledger.", src:""},
+    {emoji:"🌊", caption:"Harbour at dusk.", src:""}
+  ],
+
+  notes: [
+    {title:"To do", body:"- Call Dr. Park\n- Ask Jonah about the ledger\n- Don't tell Dad yet"},
+    {title:"Passwords?", body:"Boathouse padlock: 4 digits.\nIt's the date Mum left."}
+  ],
+
+  voicemail: [
+    {from:"Jonah Reyes", when:"Wed 18:40", text:"Mara, call me back. I saw someone watching the house. Don't answer the door."}
+  ]
+};
+/* ===================== END OF STORY SECTION ===================== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ini = n => n.split(" ").map(w=>w[0]).slice(0,2).join("");
+const colorOf = n => (STORY.contacts.find(c=>c.name===n)||{}).color || "#5a6b66";
+document.title = STORY.owner + "'s Phone";
+document.documentElement.style.setProperty("--wall", STORY.wallpaper);
+
+const APPS = {
+  messages:{label:"Messages",icon:"💬",bg:"#38b26b",badge:()=>STORY.messages.reduce((a,t)=>a+(t.unread||0),0)},
+  photos:{label:"Photos",icon:"🖼️",bg:"#e0a43a"},
+  notes:{label:"Notes",icon:"📝",bg:"#d9c24a"},
+  contacts:{label:"Contacts",icon:"👤",bg:"#6c7a89"},
+  voicemail:{label:"Voicemail",icon:"📞",bg:"#4a7fd0"}
+};
+
+/* clock */
+$("clock").textContent = STORY.time; $("lt").textContent = STORY.time; $("ld").textContent = STORY.date;
+
+/* home grid */
+function drawHome(){
+  $("grid").innerHTML = STORY.apps.map(k=>{
+    const a=APPS[k], b=a.badge?a.badge():0;
+    return `<button class="app" data-k="${k}"><span class="ic" style="background:${a.bg}">${a.icon}</span>${a.label}${b?`<span class="badge">${b}</span>`:""}</button>`;
+  }).join("");
+  document.querySelectorAll(".app").forEach(b=>b.onclick=()=>openApp(b.dataset.k));
+}
+
+/* app window helpers */
+let back = null;
+function show(title, html, backFn){
+  back = backFn;
+  $("appwin").innerHTML = `<div class="bar">${backFn?`<button id="bk">‹ Back</button>`:""}<h1>${esc(title)}</h1></div><div class="body">${html}</div>`;
+  if(backFn) $("bk").onclick = backFn;
+  $("status").classList.add("dark"); $("bar").classList.add("dk");
+}
+function openApp(k){
+  $("appwin").classList.add("open");
+  ({messages:msgList,photos:photoGrid,notes:noteList,contacts:contactList,voicemail:vmList})[k]();
+}
+function goHome(){
+  $("appwin").classList.remove("open"); back=null;
+  $("status").classList.remove("dark"); $("bar").classList.remove("dk");
+  $("light").classList.remove("show"); drawHome();
+}
+
+/* Messages */
+function msgList(){
+  show("Messages", STORY.messages.map((t,i)=>{
+    const last=[...t.msgs].reverse().find(m=>m.text)||{text:""};
+    return `<button class="row ${t.unread?"unread":""}" data-i="${i}"><span class="av" style="background:${colorOf(t.with)}">${esc(ini(t.with))}</span><span class="t"><b>${esc(t.with)}</b><small>${esc(last.text)}</small></span></button>`;
+  }).join(""));
+  document.querySelectorAll(".row").forEach(r=>r.onclick=()=>msgThread(+r.dataset.i));
+}
+function msgThread(i){
+  const t=STORY.messages[i]; t.unread=0;
+  show(t.with, `<div class="msgs">${t.msgs.map(m=>m.t?`<div class="stamp">${esc(m.t)}</div>`:`<div class="m ${m.from==="me"?"me":"them"}">${esc(m.text)}</div>`).join("")}</div>`, msgList);
+}
+
+/* Photos */
+function photoGrid(){
+  show("Photos", `<div class="photos">${STORY.photos.map((p,i)=>`<button class="ph" data-i="${i}" style="background-color:#2a3a38;${p.src?`background-image:url('${encodeURI(p.src)}')`:""}">${p.src?"":p.emoji}</button>`).join("")}</div>`);
+  document.querySelectorAll(".ph").forEach(b=>b.onclick=()=>{
+    const p=STORY.photos[+b.dataset.i], big=$("lbig");
+    big.style.backgroundImage = p.src?`url('${encodeURI(p.src)}')`:"none"; big.textContent = p.src?"":p.emoji;
+    $("lcap").textContent = p.caption||""; $("light").classList.add("show");
+  });
+}
+$("lclose").onclick = () => $("light").classList.remove("show");
+
+/* Notes */
+function noteList(){
+  show("Notes", STORY.notes.map((n,i)=>`<button class="row" data-i="${i}"><span class="t"><b>${esc(n.title)}</b><small>${esc(n.body.split("\n")[0])}</small></span></button>`).join(""));
+  document.querySelectorAll(".row").forEach(r=>r.onclick=()=>{const n=STORY.notes[+r.dataset.i]; show(n.title,`<div class="note">${esc(n.body)}</div>`,noteList);});
+}
+
+/* Contacts */
+function contactList(){
+  show("Contacts", STORY.contacts.map((c,i)=>`<button class="row" data-i="${i}"><span class="av" style="background:${c.color}">${esc(ini(c.name))}</span><span class="t"><b>${esc(c.name)}</b></span></button>`).join(""));
+  document.querySelectorAll(".row").forEach(r=>r.onclick=()=>{
+    const c=STORY.contacts[+r.dataset.i];
+    show(c.name,`<div class="card"><div class="av" style="background:${c.color}">${esc(ini(c.name))}</div><h2>${esc(c.name)}</h2><dl><dt>Phone</dt><dd>${esc(c.phone)}</dd><dt>Notes</dt><dd>${esc(c.about)}</dd></dl></div>`,contactList);
+  });
+}
+
+/* Voicemail */
+function vmList(){
+  show("Voicemail", STORY.voicemail.map(v=>`<div class="vm"><b>${esc(v.from)}</b> <small>${esc(v.when)}</small><p>“${esc(v.text)}”</p></div>`).join(""));
+}
+
+/* Lock screen + passcode */
+let entered = "";
+function unlock(){
+  $("lock").classList.add("gone"); drawHome();
+  if(STORY.banner){ setTimeout(()=>{$("note").textContent="💬 "+STORY.banner;$("note").classList.add("show");setTimeout(()=>$("note").classList.remove("show"),4000);},900); }
+}
+$("note").onclick = () => { $("note").classList.remove("show"); openApp("messages"); };
+function drawDots(){ $("dots").innerHTML = [...STORY.passcode].map((_,i)=>`<i class="${i<entered.length?"on":""}"></i>`).join(""); }
+if(STORY.passcode){
+  $("hint").textContent = STORY.passHint || "Enter passcode";
+  $("pin").style.display = "flex";
+  $("pad").innerHTML = [1,2,3,4,5,6,7,8,9,"",0,"⌫"].map(k=>k===""?"<span></span>":`<button data-k="${k}">${k}</button>`).join("");
+  drawDots();
+  $("pad").onclick = e => {
+    const k = e.target.dataset && e.target.dataset.k; if(k===undefined) return;
+    if(k==="⌫") entered = entered.slice(0,-1); else if(entered.length<STORY.passcode.length) entered += k;
+    drawDots();
+    if(entered.length===STORY.passcode.length){
+      if(entered===STORY.passcode) unlock();
+      else { $("pin").classList.add("shake"); setTimeout(()=>{$("pin").classList.remove("shake");entered="";drawDots();},350); }
+    }
+  };
+} else {
+  $("lock").onclick = unlock;
+}
+$("bar").onclick = () => { if($("appwin").classList.contains("open")) goHome(); };
+drawHome();
+</script>
+</body>
+</html>
