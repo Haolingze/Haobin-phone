@@ -22,9 +22,7 @@ const INSTA = {
 
   /* ---- STORIES: the circles along the top of the home page ---- */
   stories: [
-    {user:"hao_",      img:"c.jpg", emoji:"🌅", caption:"Sunrise"},
-    {user:"zb1official", img:"",      emoji:"🍜", caption:"Lunch break"},
-    {user:"and2ble", img:"", emoji:"💜", caption:""}
+    {user:"hao_",      img:"hanbinice.jpg", emoji:"", caption:"Travelled an hour just to get my favorite flavor"},
   ],
 
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
