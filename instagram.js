@@ -33,7 +33,7 @@ const INSTA = {
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
   posts: [
     {user:"koreadispatch", time:"5 hours ago", location:"Seoul, South Korea", img:"haobin.jpg", emoji:"",
-     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132K, comments:[
+     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132545, comments:[
        {user:"hanbin_official", text:"😲", time:"1h", likes:1643, replies:[
           {user:"hao_", text:"Why did you take so long!!", time:"1h"}
        ]},
