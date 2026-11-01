@@ -65,7 +65,7 @@ const INSTA = {
       {t:"Today 21:40"},
       {from:"them", text:"Don't forget about tonight!!"}
     ]},
-    {with:"matthew_k", unread:0, msgs:[
+    {with:"matthew_s", unread:0, msgs:[
       {t:"Mon 14:02"},
       {from:"them", text:"Yo dude, congrats! I thought you two would never do it..."},
       {from:"me", text:"Time flies when you've met the love of your life"}
