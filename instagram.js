@@ -31,10 +31,10 @@ const INSTA = {
 
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
   posts: [
-    {user:"hao_", time:"2 hours ago", location:"Seoul, South Korea", img:"a.jpg", emoji:"📷",
-     caption:"Counting down the days 🤍", likes:1280, comments:[
-       {user:"hanbin_official", text:"Almost home x", time:"1h", likes:12, replies:[
-          {user:"hao_", text:"Hurry up!!", time:"1h"}
+    {user:"koreadispatch", time:"5 hours ago", location:"Seoul, South Korea", img:"haobin.jpg", emoji:"",
+     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132K, comments:[
+       {user:"hanbin_official", text:"😲", time:"1h", likes:1643, replies:[
+          {user:"hao_", text:"Why did you take so long!!", time:"1h"}
        ]},
        {user:"fan_account_01", text:"You two are so cute!!", time:"1h", likes:340, replies:[]},
        {user:"matthew_k", text:"Get a room 😂", time:"45m", likes:5, replies:[]}
