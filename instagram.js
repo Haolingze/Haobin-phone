@@ -91,9 +91,6 @@ document.head.appendChild(Object.assign(document.createElement("style"),{textCon
 .ix-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#2a3a38}
 .ix-ph2{display:grid;place-items:center;font-size:80px}
 .ix-act{display:flex;gap:4px;padding:6px 8px}.ix-act button{background:none;border:0;font-size:24px;cursor:pointer}
-.ix-act button:nth-child(1) img{width:44px !important;height:44px !important}
-.ix-act button:nth-child(2) img{width:34px !important;height:34px !important}
-.ix-act button:nth-child(3) img{width:26px !important;height:26px !important}
 .ix-txt{padding:2px 12px;font-size:14px;line-height:1.4;white-space:pre-wrap}
 .ix-vc{background:none;border:0;color:var(--ink);opacity:.55;padding:2px 12px;font-size:14px;cursor:pointer}
 .ix-time{padding:2px 12px;font-size:11px;opacity:.5;text-transform:uppercase}
@@ -123,7 +120,7 @@ const ixHue = n => "hsl(" + ([...n].reduce((a,c)=>a+c.charCodeAt(0),0)%360) + ",
 const ixLikes = p => ((p.likes||0)+(p.liked?1:0)).toLocaleString("en-GB");
 const ixName = u => (INSTA.accounts[u]||{}).name || u;
 const ixIcons = Object.assign({like:"likebutton.jpg", liked:"likedbutton.jpg", comment:"💬", share:"✈️"}, INSTA.icons||{});
-const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="70" height="70" style="width:34px;height:34px;object-fit:contain;display:block">` : v;function ixAv(u,s){
+const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="34" height="34" style="width:34px;height:34px;object-fit:contain;display:block">` : v;function ixAv(u,s){
   const a=INSTA.accounts[u]||{}, z=s||36;
   return a.avatar
     ? `<img class="ix-av" style="width:${z}px;height:${z}px" src="${esc(a.avatar)}" alt="">`
