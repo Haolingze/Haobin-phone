@@ -33,12 +33,12 @@ const INSTA = {
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
   posts: [
     {user:"koreadispatch", time:"5 hours ago", location:"Seoul, South Korea", img:"haobin.jpg", emoji:"",
-     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132545, comments:537[
+     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132545, comments:[
        {user:"sunghan._.bin", text:"😲", time:"1h", likes:1643, replies:[
           {user:"hao_", text:"Why did you take so long!!", time:"1h"}
        ]},
-       {user:"cuhaote", text:"I KNEW IT!!", time:"1h", likes:340, replies:3[]},
-       {user:"matthew_s", text:"Get a room 😂", time:"45m", likes:1573, replies: 56[]}
+       {user:"cuhaote", text:"I KNEW IT!!", time:"1h", likes:340, replies:[]},
+       {user:"matthew_s", text:"Get a room 😂", time:"45m", likes:1573, replies: []}
     ]},
     {user:"hao_", time:"1 day ago", location:"Incheon Airport", img:"italyhao.jpg", emoji:"",
      caption:"Stage day. Fit check.", likes:52300, comments:[
@@ -48,6 +48,8 @@ const INSTA = {
     {user:"sunghan._.bin", time:"3 days ago", location:"Kyoto", img:"suit.jpg", emoji:"",
      caption:"Oyasumi!", likes:423567, comments:[
        {user:"hao_", text:"Come back to meee", time:"20h", likes:4100, replies:[]},
+          ]}
+  ],
         
 
   /* ---- DMs: from:"them" is the other person, from:"me" is the owner.
