@@ -7,7 +7,7 @@
 const INSTA = {
   me: "sunghan._.bin",       // the phone owner's username (must match a name in "accounts")
   icon: "instaa.jpg",    
-     icons: {like:"like.jpg", liked:"likedbutton.jpg", comment:"comment.jpg", share:"dm.jpg"},// home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
+     icons: {like:"likebutton.jpg", liked:"likedbutton.jpg", comment:"comment.jpg", share:"dm.jpg"},// home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
