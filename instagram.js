@@ -5,19 +5,19 @@
    Every line ends with a comma EXCEPT the last one in each list.
    ===================================================================== */
 const INSTA = {
-  me: "hanbin_official",       // the phone owner's username (must match a name in "accounts")
+  me: "sunghan._.bin",       // the phone owner's username (must match a name in "accounts")
   icon: "instaa.jpg",                  // home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
-    hanbin_official: {name:"Hanbin", avatar:"", color:"#c2573b", followers:"2.4M", following:"31",
-                      bio:"Singer ✨\nBusiness: DM only"},
-    hao_:            {name:"Hao", avatar:"", color:"#4a6fa5", followers:"1,204", following:"98",
-                      bio:"Photographer 📷\nHanbin's biggest fan"},
-    matthew_k:       {name:"Matthew", avatar:"", color:"#555555", followers:"530", following:"412",
-                      bio:"Crew life"},
-    fan_account_01:  {name:"Fan Account", avatar:"", color:"#8a5fb0", followers:"12.3K", following:"5",
-                      bio:"Daily updates 💜"}
+    sunghan._.bin: {name:"성한빈 (SUNGHANBIN)", avatar:"hanbinpfp.jpg", color:"#c2573b", followers:"705K", following:"2",
+                      bio:"ZEROBASEONE"},
+    hao_:            {name:"Zhang Hao", avatar:"haopfp.jpg", color:"#4a6fa5", followers:"985K", following:"2",
+                      bio:"冰冰的最大的粉丝"},
+   zb1official:       {name:"ZEROBASEONE", avatar:"zb1pfp.jpg", color:"#555555", followers:"4.5M", following:"4",
+                      bio:"SUNG HANBIN & ZHANG HAO DUO DEBUT 2028.01.01"},
+    and2ble:  {name:"AND2BLE", avatar:"a2bpfp.jpg", color:"#8a5fb0", followers:"946K", following:"1",
+                      bio:"AND2BLE Official Instagram Sequence 02: Attraction"}
   },
 
   /* ---- STORIES: the circles along the top of the home page ---- */
