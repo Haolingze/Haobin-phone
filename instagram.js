@@ -40,8 +40,8 @@ const INSTA = {
        {user:"cuhaote", text:"I KNEW IT!!", time:"1h", likes:340, replies:[]},
        {user:"matthew_s", text:"Get a room 😂", time:"45m", likes:1573, replies: []}
     ]},
-    {user:"hao_", time:"1 day ago", location:"Incheon Airport", img:"italyhao.jpg", emoji:"",
-     caption:"Stage day. Fit check.", likes:52300, comments:[
+    {user:"hao_", time:"1 day ago", location:"Florence", img:"italyhao.jpg", emoji:"",
+     caption:"Fit check.", likes:52300, comments:[
        {user:"sunghan._.bin", text:"You should wear it more often!", time:"20h", likes:4100, replies:[]},
        {user:"cuhaote", text:"Everything he wears is perfect", time:"19h", likes:980, replies:[]}
     ]},
