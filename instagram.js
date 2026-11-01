@@ -128,7 +128,7 @@ function ixShell(o){
 }
 function ixPost(p,i){
   const n=(p.comments||[]).length;
-  return `<div class="ix-post"><div class="ix-ph"><button class="ix-u" data-u="${esc(p.user)}">${ixAv(p.user,32)}<span><b>${esc(p.user)}</b>${p.location?`<small>${esc(p.location)}</small>`:""}</span></button><span>⋯</span></div>${p.img?`<img class="ix-img" src="${esc(p.img)}" alt="">`:`<div class="ix-img ix-ph2">${p.emoji||"📷"}</div>`}<div class="ix-act"><button data-l="${i}">${p.liked?"❤️":"🤍"}</button><button data-c="${i}">💬</button><button>✈️</button></div><div class="ix-txt"><b id="lk${i}">${ixLikes(p)} likes</b></div><div class="ix-txt"><b>${esc(p.user)}</b> ${esc(p.caption||"")}</div>${n?`<button class="ix-vc" data-c="${i}">View all ${n} comments</button>`:""}<div class="ix-time">${esc(p.time||"")}</div></div>`;
+  return `<div class="ix-post"><div class="ix-ph"><button class="ix-u" data-u="${esc(p.user)}">${ixAv(p.user,32)}<span><b>${esc(p.user)}</b>${p.location?`<small>${esc(p.location)}</small>`:""}</span></button><span>⋯</span></div>${p.img?`<img class="ix-img" src="${esc(p.img)}" alt="">`:`<div class="ix-img ix-ph2">${p.emoji||"📷"}</div>`}<div class="ix-act"><button data-l="${i}">${p.liked?"likedbutton.jpg":"likebutton.jpg"}</button><button data-c="${i}">"comment.jpg"</button><button>"dm.jpg"</button></div><div class="ix-txt"><b id="lk${i}">${ixLikes(p)} likes</b></div><div class="ix-txt"><b>${esc(p.user)}</b> ${esc(p.caption||"")}</div>${n?`<button class="ix-vc" data-c="${i}">View all ${n} comments</button>`:""}<div class="ix-time">${esc(p.time||"")}</div></div>`;
 }
 function ixWire(ret){
   const r=$("appwin");
