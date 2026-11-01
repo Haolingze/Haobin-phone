@@ -33,21 +33,22 @@ const INSTA = {
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
   posts: [
     {user:"koreadispatch", time:"5 hours ago", location:"Seoul, South Korea", img:"haobin.jpg", emoji:"",
-     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132545, comments:[
-       {user:"hanbin_official", text:"😲", time:"1h", likes:1643, replies:[
+     caption:"Sung Hanbin and Zhang Hao confirm 4 year long relationship", likes: 132545, comments:537[
+       {user:"sunghan._.bin", text:"😲", time:"1h", likes:1643, replies:[
           {user:"hao_", text:"Why did you take so long!!", time:"1h"}
        ]},
-       {user:"fan_account_01", text:"You two are so cute!!", time:"1h", likes:340, replies:[]},
-       {user:"matthew_k", text:"Get a room 😂", time:"45m", likes:5, replies:[]}
+       {user:"cuhaote", text:"I KNEW IT!!", time:"1h", likes:340, replies:3[]},
+       {user:"matthew_s", text:"Get a room 😂", time:"45m", likes:1573, replies: 56[]}
     ]},
-    {user:"hanbin_official", time:"1 day ago", location:"Incheon Airport", img:"b.jpg", emoji:"✈️",
+    {user:"hao_", time:"1 day ago", location:"Incheon Airport", img:"italyhao.jpg", emoji:"",
      caption:"Stage day. Fit check.", likes:52300, comments:[
-       {user:"hao_", text:"Best outfit ever", time:"20h", likes:4100, replies:[]},
-       {user:"fan_account_01", text:"Everything he wears is perfect", time:"19h", likes:980, replies:[]}
+       {user:"sunghan._.bin", text:"You should wear it more often!", time:"20h", likes:4100, replies:[]},
+       {user:"cuhaote", text:"Everything he wears is perfect", time:"19h", likes:980, replies:[]}
     ]},
-    {user:"matthew_k", time:"3 days ago", location:"", img:"", emoji:"🍜",
-     caption:"Dinner with the crew", likes:42, comments:[]}
-  ],
+    {user:"sunghan._.bin", time:"3 days ago", location:"Kyoto", img:"suit.jpg", emoji:"",
+     caption:"Oyasumi!", likes:423567, comments:[
+       {user:"hao_", text: "Come back to meee", time:"20h", likes:4100, replies:[]},
+        
 
   /* ---- DMs: from:"them" is the other person, from:"me" is the owner.
           {t:"..."} is a grey time label. Add img:"file.jpg" to send a photo. ---- */
