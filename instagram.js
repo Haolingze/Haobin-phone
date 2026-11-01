@@ -70,6 +70,7 @@ const INSTA = {
 document.head.appendChild(Object.assign(document.createElement("style"),{textContent:`
 .ix-top{padding:48px 14px 8px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);min-height:92px;font-size:17px;flex:none}
 .ix-top b{flex:1}.ix-top button{background:none;border:0;color:var(--ink);font-size:24px;cursor:pointer;padding:0 4px}
+.ix-top:empty{min-height:46px;padding:0;border-bottom:0}
 .ix-logo{font:italic 700 27px Georgia,serif;flex:1}
 .ix-th{display:flex;align-items:center;gap:10px;flex:1}.ix-th b{flex:none}
 .ix-body{flex:1;min-height:0;overflow-y:auto}
@@ -145,9 +146,8 @@ function ixWire(ret){
 /* ---------- pages ---------- */
 function ixHome(){
   const stories=`<div class="ix-stories">${INSTA.stories.map((s,i)=>`<button class="ix-st" data-s="${i}"><span class="ix-ring">${ixAv(s.user,56)}</span><small>${esc(s.user)}</small></button>`).join("")}</div>`;
-  ixShell({title:`<span class="ix-logo">Instagram</span>`, right:`<button>🤍</button><button id="ixdm">✈️</button>`, tab:"home",
+  ixShell({title:"", right:"", tab:"home",
     body: stories + INSTA.posts.map(ixPost).join("")});
-  $("ixdm").onclick = ixInbox;
   ixWire(ixHome);
   $("appwin").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{
     const s=INSTA.stories[+b.dataset.s], big=$("lbig");
