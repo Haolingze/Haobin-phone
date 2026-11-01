@@ -46,8 +46,8 @@ const INSTA = {
        {user:"cuhaote", text:"Everything he wears is perfect", time:"19h", likes:980, replies:[]}
     ]},
     {user:"sunghan._.bin", time:"3 days ago", location:"Kyoto", img:"suit.jpg", emoji:"",
-     caption:"Oyasumi!", likes:423567, comments:[
-       {user:"hao_", text: "Come back to meee", time:"20h", likes:4100, replies:[]},
+     caption:"Oyasumi!", likes:423567, comments:
+       {user:"hao_", text:"Come back to meee", time:"20h", likes:4100, replies:[]},
         
 
   /* ---- DMs: from:"them" is the other person, from:"me" is the owner.
