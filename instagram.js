@@ -6,7 +6,8 @@
    ===================================================================== */
 const INSTA = {
   me: "sunghan._.bin",       // the phone owner's username (must match a name in "accounts")
-  icon: "instaa.jpg",                  // home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
+  icon: "instaa.jpg",    
+     icons: {like:"like.jpg", liked:"liked.jpg", comment:"comment.jpg", share:"dm.jpg"},// home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
@@ -118,6 +119,8 @@ document.head.appendChild(Object.assign(document.createElement("style"),{textCon
 const ixHue = n => "hsl(" + ([...n].reduce((a,c)=>a+c.charCodeAt(0),0)%360) + ",45%,45%)";
 const ixLikes = p => ((p.likes||0)+(p.liked?1:0)).toLocaleString("en-GB");
 const ixName = u => (INSTA.accounts[u]||{}).name || u;
+const ixIcons = Object.assign({like:"🤍", liked:"❤️", comment:"💬", share:"✈️"}, INSTA.icons||{});
+const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="26" height="26" style="width:26px;height:26px;object-fit:contain;display:block">` : v;
 function ixAv(u,s){
   const a=INSTA.accounts[u]||{}, z=s||36;
   return a.avatar
@@ -132,13 +135,13 @@ function ixShell(o){
 }
 function ixPost(p,i){
   const n=(p.comments||[]).length;
-  return `<div class="ix-post"><div class="ix-ph"><button class="ix-u" data-u="${esc(p.user)}">${ixAv(p.user,32)}<span><b>${esc(p.user)}</b>${p.location?`<small>${esc(p.location)}</small>`:""}</span></button><span>⋯</span></div>${p.img?`<img class="ix-img" src="${esc(p.img)}" alt="">`:`<div class="ix-img ix-ph2">${p.emoji||"📷"}</div>`}<div class="ix-act"><button data-l="${i}">${p.liked?"likedbutton.jpg":"likebutton.jpg"}</button><button data-c="${i}">"comment.jpg"</button><button>"dm.jpg"</button></div><div class="ix-txt"><b id="lk${i}">${ixLikes(p)} likes</b></div><div class="ix-txt"><b>${esc(p.user)}</b> ${esc(p.caption||"")}</div>${n?`<button class="ix-vc" data-c="${i}">View all ${n} comments</button>`:""}<div class="ix-time">${esc(p.time||"")}</div></div>`;
+  return `<div class="ix-post"><div class="ix-ph"><button class="ix-u" data-u="${esc(p.user)}">${ixAv(p.user,32)}<span><b>${esc(p.user)}</b>${p.location?`<small>${esc(p.location)}</small>`:""}</span></button><span>⋯</span></div>${p.img?`<img class="ix-img" src="${esc(p.img)}" alt="">`:`<div class="ix-img ix-ph2">${p.emoji||"📷"}</div>`}<div class="ix-act"><button data-l="${i}">${ixIc(p.liked?ixIcons.liked:ixIcons.like)}</button><button data-c="${i}">${ixIc(ixIcons.comment)}</button><button>${ixIc(ixIcons.share)}</button></div><div class="ix-txt"><b id="lk${i}">${ixLikes(p)} likes</b></div><div class="ix-txt"><b>${esc(p.user)}</b> ${esc(p.caption||"")}</div>${n?`<button class="ix-vc" data-c="${i}">View all ${n} comments</button>`:""}<div class="ix-time">${esc(p.time||"")}</div></div>`;
 }
 function ixWire(ret){
   const r=$("appwin");
   r.querySelectorAll("[data-l]").forEach(b=>b.onclick=()=>{
     const i=+b.dataset.l, p=INSTA.posts[i]; p.liked=!p.liked;
-    b.textContent=p.liked?"❤️":"🤍"; const e=$("lk"+i); if(e) e.textContent=ixLikes(p)+" likes";
+b.innerHTML=ixIc(p.liked?ixIcons.liked:ixIcons.like); const e=$("lk"+i); if(e) e.textContent=ixLikes(p)+" likes";
   });
   r.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>ixComments(+b.dataset.c,ret));
   r.querySelectorAll("[data-u]").forEach(b=>b.onclick=()=>ixProfile(b.dataset.u,ret));
