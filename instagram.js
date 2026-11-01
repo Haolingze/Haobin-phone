@@ -123,7 +123,7 @@ function ixAv(u,s){
     : `<span class="ix-av" style="width:${z}px;height:${z}px;background:${a.color||ixHue(u)};font-size:${Math.round(z*0.4)}px">${esc((u[0]||"?").toUpperCase())}</span>`;
 }
 function ixShell(o){
-  $("appwin").innerHTML = `<div class="ix-top">${o.back?`<button id="ixback">‹</button>`:""}${o.title}${o.right||""}</div><div class="ix-body">${o.body}</div>${o.foot||""}${o.tab?`<div class="ix-tabs">${[["home","🏠"],["dm","dmlogo.jpg"],["me","👤"]].map(([k,i])=>`<button data-t="${k}" class="${o.tab===k?"on":""}">${i}</button>`).join("")}</div>`:""}`;
+  $("appwin").innerHTML = `<div class="ix-top">${o.back?`<button id="ixback">‹</button>`:""}${o.title}${o.right||""}</div><div class="ix-body">${o.body}</div>${o.foot||""}${o.tab?`<div class="ix-tabs">${[["home","🏠"],["dm","dmlogo.jpg"],["me","👤"]].map(([k,i])=>`<button data-t="${k}" class="${o.tab===k?"on":""}">${/\.(png|jpe?g|webp|svg)$/i.test(i)?`<img src="${esc(i)}" alt="">`:i}</button>`).join("")}</div>`:""}`;
   $("status").classList.add("dark"); $("bar").classList.add("dk");
   if(o.back) $("ixback").onclick = o.back;
   $("appwin").querySelectorAll(".ix-tabs button").forEach(b=>b.onclick=()=>({home:ixHome,dm:ixInbox,me:()=>ixProfile(INSTA.me)})[b.dataset.t]());
