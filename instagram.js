@@ -7,7 +7,7 @@
 const INSTA = {
   me: "sunghan._.bin",       // the phone owner's username (must match a name in "accounts")
   icon: "instaa.jpg",    
-     icons: {like:"like.jpg", liked:"liked.jpg", comment:"comment.jpg", share:"dm.jpg"},// home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
+     icons: {like:"like.jpg", liked:"likedbutton.jpg", comment:"comment.jpg", share:"dm.jpg"},// home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
@@ -119,7 +119,7 @@ document.head.appendChild(Object.assign(document.createElement("style"),{textCon
 const ixHue = n => "hsl(" + ([...n].reduce((a,c)=>a+c.charCodeAt(0),0)%360) + ",45%,45%)";
 const ixLikes = p => ((p.likes||0)+(p.liked?1:0)).toLocaleString("en-GB");
 const ixName = u => (INSTA.accounts[u]||{}).name || u;
-const ixIcons = Object.assign({like:"🤍", liked:"❤️", comment:"💬", share:"✈️"}, INSTA.icons||{});
+const ixIcons = Object.assign({like:"likebutton.jpg", liked:"likedbutton.jpg", comment:"💬", share:"✈️"}, INSTA.icons||{});
 const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="26" height="26" style="width:26px;height:26px;object-fit:contain;display:block">` : v;
 function ixAv(u,s){
   const a=INSTA.accounts[u]||{}, z=s||36;
