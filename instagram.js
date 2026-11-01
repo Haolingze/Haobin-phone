@@ -91,6 +91,9 @@ document.head.appendChild(Object.assign(document.createElement("style"),{textCon
 .ix-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#2a3a38}
 .ix-ph2{display:grid;place-items:center;font-size:80px}
 .ix-act{display:flex;gap:4px;padding:6px 8px}.ix-act button{background:none;border:0;font-size:24px;cursor:pointer}
+.ix-act button:nth-child(1) img{width:44px !important;height:44px !important}
+.ix-act button:nth-child(2) img{width:34px !important;height:34px !important}
+.ix-act button:nth-child(3) img{width:26px !important;height:26px !important}
 .ix-txt{padding:2px 12px;font-size:14px;line-height:1.4;white-space:pre-wrap}
 .ix-vc{background:none;border:0;color:var(--ink);opacity:.55;padding:2px 12px;font-size:14px;cursor:pointer}
 .ix-time{padding:2px 12px;font-size:11px;opacity:.5;text-transform:uppercase}
