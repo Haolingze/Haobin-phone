@@ -120,7 +120,7 @@ const ixHue = n => "hsl(" + ([...n].reduce((a,c)=>a+c.charCodeAt(0),0)%360) + ",
 const ixLikes = p => ((p.likes||0)+(p.liked?1:0)).toLocaleString("en-GB");
 const ixName = u => (INSTA.accounts[u]||{}).name || u;
 const ixIcons = Object.assign({like:"likebutton.jpg", liked:"likedbutton.jpg", comment:"💬", share:"✈️"}, INSTA.icons||{});
-const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="40" height="40" style="width:34px;height:34px;object-fit:contain;display:block">` : v;function ixAv(u,s){
+const ixIc = v => /\.(png|jpe?g|webp|svg)$/i.test(v) ? `<img src="${esc(v)}" alt="" width="70" height="70" style="width:34px;height:34px;object-fit:contain;display:block">` : v;function ixAv(u,s){
   const a=INSTA.accounts[u]||{}, z=s||36;
   return a.avatar
     ? `<img class="ix-av" style="width:${z}px;height:${z}px" src="${esc(a.avatar)}" alt="">`
