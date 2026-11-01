@@ -17,17 +17,21 @@ const INSTA = {
    "zb1official":       {name:"ZEROBASEONE", avatar:"zb1pfp.jpg", color:"#555555", followers:"4.5M", following:"4",
                       bio:"SUNG HANBIN & ZHANG HAO DUO DEBUT 2028.01.01"},
     "and2ble":  {name:"AND2BLE", avatar:"a2bpfp.jpg", color:"#8a5fb0", followers:"946K", following:"1",
-                      bio:"AND2BLE Official Instagram Sequence 02: Attraction"}
+                      bio:"AND2BLE Official Instagram Sequence 02: Attraction"},
+    "koreadispatch":  {name:"", avatar:"dispatch.jpg", color:"#8a5fb0", followers:"12.4M", following:"9",
+                      bio:"D'FESTA THE ORIGIN TICKET OPEN!"}
   },
 
   /* ---- STORIES: the circles along the top of the home page ---- */
   stories: [
     {user:"hao_",      img:"hanbinice.jpg", emoji:"", caption:"Travelled an hour just to get my favorite flavor"},
+    {user:"zb1official", img:"who.jpg",      emoji:"", caption:"Who is it??"},
+    {user:"and2ble", img:"haidilao.jpg", emoji:"", caption:"Here again after only 24 hours!"}
   ],
 
   /* ---- POSTS: newest first. "user" must be in accounts. ---- */
   posts: [
-    {user:"hao_", time:"2 hours ago", location:"Seoul", img:"a.jpg", emoji:"📷",
+    {user:"hao_", time:"2 hours ago", location:"Seoul, South Korea", img:"a.jpg", emoji:"📷",
      caption:"Counting down the days 🤍", likes:1280, comments:[
        {user:"hanbin_official", text:"Almost home x", time:"1h", likes:12, replies:[
           {user:"hao_", text:"Hurry up!!", time:"1h"}
