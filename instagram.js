@@ -42,6 +42,11 @@ const INSTA = {
        {user:"cuhaote", text:"I KNEW IT!!", time:"1h", likes:340, replies:[]},
        {user:"matthew_s", text:"Get a room 😂", time:"45m", likes:1573, replies: []}
     ]},
+      {user:"sunghan._.bin", time:"1 week ago", location:"Seoul", img:"hanbintaipei.jpg", emoji:"",
+     caption:"The weather was so good yesterday...", likes:3573, comments:[
+       {user:"haobin4ever", text:"We're STILL doing this?", time:"1w", likes:410, replies:[]},
+       {user:"hao_", text:"it was actually raining! And not the good kind", time:"1w", likes:9320, replies:[]}
+    ]},
     {user:"hao_", time:"1 day ago", location:"Florence", img:"italyhao.jpg", emoji:"",
      caption:"Fit check.", likes:52300, comments:[
        {user:"sunghan._.bin", text:"You should wear it more often!", time:"20h", likes:4100, replies:[]},
@@ -58,6 +63,9 @@ const INSTA = {
           {t:"..."} is a grey time label. Add img:"file.jpg" to send a photo. ---- */
   dms: [
     {with:"hao_", unread:1, msgs:[
+       {t:"1 Week ago"},
+      {from:"them", text:"OMG change that caption!!"},
+       {from:"me", text:"Why? They already knew about the weather reports years ago!"},
       {t:"Yesterday 22:10"},
       {from:"them", text:"Are you still awake?"},
       {from:"me", text:"Always for you"},
