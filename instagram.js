@@ -55,16 +55,16 @@ const INSTA = {
   dms: [
     {with:"hao_", unread:1, msgs:[
       {t:"Yesterday 22:10"},
-      {from:"them", text:"Are you still up?"},
+      {from:"them", text:"Are you still awake?"},
       {from:"me", text:"Always for you"},
-      {from:"them", img:"d.jpg", text:"Look what I found"},
+      {from:"them", img:"d.jpg", text:"Can you post this next?"},
       {t:"Today 21:40"},
-      {from:"them", text:"Don't forget about tonight"}
+      {from:"them", text:"Don't forget about tonight!!"}
     ]},
     {with:"matthew_k", unread:0, msgs:[
       {t:"Mon 14:02"},
-      {from:"them", text:"Manager is asking where you are"},
-      {from:"me", text:"Tell her I'm in a meeting"}
+      {from:"them", text:"Yo dude, congrats! I thought you two would never do it..."},
+      {from:"me", text:"Time flies when you've met the love of your life"}
     ]}
   ]
 };
