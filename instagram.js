@@ -6,7 +6,7 @@
    ===================================================================== */
 const INSTA = {
   me: "hanbin_official",       // the phone owner's username (must match a name in "accounts")
-  icon: "📸",                  // home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
+  icon: "instaa.jpg",                  // home-screen icon: an emoji, or a file name like "instagram-icon.jpg"
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
