@@ -10,13 +10,13 @@ const INSTA = {
 
   /* ---- ACCOUNTS: one per username used anywhere below ---- */
   accounts: {
-    sunghan._.bin: {name:"성한빈 (SUNGHANBIN)", avatar:"hanbinpfp.jpg", color:"#c2573b", followers:"705K", following:"2",
+    "sunghan._.bin": {name:"성한빈 (SUNGHANBIN)", avatar:"hanbinpfp.jpg", color:"#c2573b", followers:"705K", following:"2",
                       bio:"ZEROBASEONE"},
-    hao_:            {name:"Zhang Hao", avatar:"haopfp.jpg", color:"#4a6fa5", followers:"985K", following:"2",
+    "hao_":            {name:"Zhang Hao", avatar:"haopfp.jpg", color:"#4a6fa5", followers:"985K", following:"2",
                       bio:"冰冰的最大的粉丝"},
-   zb1official:       {name:"ZEROBASEONE", avatar:"zb1pfp.jpg", color:"#555555", followers:"4.5M", following:"4",
+   "zb1official":       {name:"ZEROBASEONE", avatar:"zb1pfp.jpg", color:"#555555", followers:"4.5M", following:"4",
                       bio:"SUNG HANBIN & ZHANG HAO DUO DEBUT 2028.01.01"},
-    and2ble:  {name:"AND2BLE", avatar:"a2bpfp.jpg", color:"#8a5fb0", followers:"946K", following:"1",
+    "and2ble":  {name:"AND2BLE", avatar:"a2bpfp.jpg", color:"#8a5fb0", followers:"946K", following:"1",
                       bio:"AND2BLE Official Instagram Sequence 02: Attraction"}
   },
 
