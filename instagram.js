@@ -19,6 +19,8 @@ const INSTA = {
                       bio:"SUNG HANBIN & ZHANG HAO DUO DEBUT 2028.01.01"},
     "and2ble":  {name:"AND2BLE", avatar:"a2bpfp.jpg", color:"#8a5fb0", followers:"946K", following:"1",
                       bio:"AND2BLE Official Instagram Sequence 02: Attraction"},
+         "matthew_s":  {name:"MATTHEW SEOK", avatar:"matthewpfp.jpg", color:"#8a5fb0", followers:"367K", following:"1",
+                      bio:"Professional gamer. Part time idol"},
     "koreadispatch":  {name:"", avatar:"dispatch.jpg", color:"#8a5fb0", followers:"12.4M", following:"9",
                       bio:"D'FESTA THE ORIGIN TICKET OPEN!"}
   },
